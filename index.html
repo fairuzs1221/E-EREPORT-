@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="E-Report — Sistem Pengaduan Digital Sarana dan Prasarana Modern">
+
+    <meta name="theme-color" content="#2563eb">
+
+    <title>E-Report | Pengaduan Digital Premium</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     DYNAMIC ISLAND / LIVE NOTIFIER
+===================================================== -->
+<div id="dynamicIsland" class="dynamic-island" onclick="this.classList.toggle('expanded')">
+    <span class="island-dot"></span>
+    <span id="islandText" class="island-text">E-Report System Ready</span>
+    <span class="island-badge">LIVE</span>
+</div>
+
+
+<!-- =====================================================
+     FLOATING PILL NAVBAR
+===================================================== -->
+<header class="navbar">
+    <div class="brand">
+        <div class="logo">
+            <span>ER</span>
+        </div>
+        <div class="brand-info">
+            <h2>E-Report</h2>
+            <span>Enterprise Suite</span>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <button id="btnNavHome" class="nav-btn active" type="button">
+            <span class="nav-icon">🏠</span>
+            <span>Beranda</span>
+        </button>
+
+        <button id="btnNavGuide" class="nav-btn" type="button">
+            <span class="nav-icon">📖</span>
+            <span>Panduan</span>
+        </button>
+
+        <button id="btnDarkMode" class="theme-btn" type="button" aria-label="Toggle Dark Mode">
+            🌙
+        </button>
+    </nav>
+</header>
+
+
+<!-- =====================================================
+     MAIN CONTAINER
+===================================================== -->
+<main class="container">
+
+<!-- =====================================================
+     HOME PAGE
+===================================================== -->
+<section id="pageHome" class="section active">
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="status">
+                <span class="status-dot"></span>
+                <span>Layanan Real-time Aktif</span>
+            </div>
+
+            <h1>
+                Sampaikan Pengaduan
+                <span>Dengan Kecepatan Maksimal</span>
+            </h1>
+
+            <p>
+                Laporkan kendala sarana & prasarana instansi secara transparan, akurat, dan terpantau langsung melalui dasbor digital terintegrasi.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#reportCardForm" class="hero-btn">
+                    <span>⚡</span>
+                    Buat Laporan Sekarang
+                </a>
+            </div>
+
+            <div class="hero-info">
+                <span>⚡ Respon Cepat</span>
+                <span>🔒 Data Terenkripsi</span>
+                <span>📈 Pantau Live</span>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-icon">
+                🚀
+            </div>
+            <div class="floating-card card-one">
+                <span>📋</span>
+                <div>
+                    <strong>Laporan Masuk</strong>
+                    <small>Terkirim otomatis</small>
+                </div>
+            </div>
+            <div class="floating-card card-two">
+                <span>✨</span>
+                <div>
+                    <strong>Status Live</strong>
+                    <small>100% Transparan</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- STATISTICS BENTO GRID -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-icon blue">📋</div>
+            <div>
+                <span>Total Laporan</span>
+                <h2 id="totalCount">0</h2>
+                <small>Semua riwayat</small>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon orange">⏳</div>
+            <div>
+                <span>Menunggu</span>
+                <h2 id="waitCount">0</h2>
+                <small>Antrean tindakan</small>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon purple">⚙️</div>
+            <div>
+                <span>Diproses</span>
+                <h2 id="procCount">0</h2>
+                <small>Dalam penanganan</small>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon green">✓</div>
+            <div>
+                <span>Selesai</span>
+                <h2 id="doneCount">0</h2>
+                <small>Tuntas dikerjakan</small>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- NOTIFICATION ALERT -->
+    <div id="notifBox" class="notification"></div>
+
+
+    <!-- REPORT FORM CARD -->
+    <div id="reportCardForm" class="content-card">
+        <div class="section-title">
+            <div>
+                <span class="small-title">FORMULIR PENGADUAN</span>
+                <h2>Buat Laporan Baru</h2>
+                <p>Lengkapi detail di bawah ini agar laporan dapat segera divalidasi tim teknis.</p>
+            </div>
+            <div class="section-badge">● Sistem Secure</div>
+        </div>
+
+        <form id="reportForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="pelapor">Nama Pelapor</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="pelapor" placeholder="Masukkan nama lengkap Anda" autocomplete="name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori">Kategori Kendala</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🏷️</span>
+                        <select id="kategori" required>
+                            <option value="">Pilih Kategori Kendala</option>
+                            <option value="Internet">🌐 Internet & Jaringan</option>
+                            <option value="Fasilitas">🏢 Fasilitas & Ruangan</option>
+                            <option value="Kebersihan">🧹 Kebersihan & Sanitasi</option>
+                            <option value="Keamanan">🛡️ Keamanan & Akses</option>
+                            <option value="Lainnya">📌 Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lokasi">Lokasi Kejadian</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📍</span>
+                        <input type="text" id="lokasi" placeholder="Contoh: Gedung A Lantai 3" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="judul">Judul Laporan</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📝</span>
+                        <input type="text" id="judul" placeholder="Contoh: AC Ruang Meeting Bocor" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="deskripsi">Deskripsi Detail Masalah</label>
+                    <span class="required-info">Wajib diisi</span>
+                </div>
+
+                <div class="textarea-wrapper">
+                    <span class="textarea-icon">💬</span>
+                    <textarea id="deskripsi" rows="5" placeholder="Jelaskan kronologi dan detail kendala secara spesifik..." required></textarea>
+                </div>
+
+                <div class="textarea-bottom">
+                    <span>Tips: Berikan detail yang jelas untuk mempercepat proses perbaikan.</span>
+                    <div id="charCounter" class="char-counter">0 karakter</div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>🚀 Kirim Laporan Sekarang</span>
+                <span class="button-arrow">→</span>
+            </button>
+        </form>
+    </div>
+
+
+    <!-- REPORT DATA MANAGEMENT CARD -->
+    <div class="content-card">
+        <div class="section-title">
+            <div>
+                <span class="small-title">MONITORING</span>
+                <h2>Daftar Pengaduan Aktif</h2>
+                <p>Cari, filter, dan kelola status pengaduan secara transparan.</p>
+            </div>
+            <div class="section-badge">● Live Sync</div>
+        </div>
+
+        <div class="toolbar">
+            <div class="search-wrapper">
+                <span>🔎</span>
+                <input type="text" id="searchBox" placeholder="Cari judul laporan atau nama pelapor...">
+            </div>
+
+            <div class="filter-wrapper">
+                <span>⚡</span>
+                <select id="statusFilter">
+                    <option value="Semua">Semua Status</option>
+                    <option value="Menunggu">⏳ Menunggu</option>
+                    <option value="Diproses">⚙️ Diproses</option>
+                    <option value="Selesai">✓ Selesai</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="action-toolbar">
+            <button id="btnDeleteLast" class="secondary-btn" type="button">
+                ↩ Hapus Laporan Terakhir
+            </button>
+            <button id="btnClearDone" class="danger-btn" type="button">
+                🗑 Bersihkan Status Selesai
+            </button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Laporan & Kategori</th>
+                        <th>Pelapor & Lokasi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="reportTableBody">
+                    <!-- Data dinamis dari JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUIDE PAGE
+===================================================== -->
+<section id="pageGuide" class="section">
+    <div class="guide-header">
+        <div class="guide-header-content">
+            <span class="small-title">PUSAT BANTUAN</span>
+            <h1>Panduan Penggunaan E-Report</h1>
+            <p>Ikuti 3 langkah mudah untuk mengajukan pengaduan fasilitas instansi Anda.</p>
+        </div>
+        <div class="guide-icon">📖</div>
+    </div>
+
+    <div class="guide-grid">
+        <div class="guide-card">
+            <div class="step">01</div>
+            <h3>Lengkapi Formulir</h3>
+            <p>Masukkan identitas pelapor, pilih kategori kendala, serta tentukan lokasi spesifik tempat terjadinya masalah.</p>
+        </div>
+
+        <div class="guide-card">
+            <div class="step">02</div>
+            <h3>Kirim Laporan</h3>
+            <p>Tuliskan judul ringkas beserta deskripsi detail, lalu tekan tombol kirim untuk memasukkan laporan ke sistem.</p>
+        </div>
+
+        <div class="guide-card">
+            <div class="step">03</div>
+            <h3>Pantau Progres</h3>
+            <p>Cek perkembangan penanganan secara real-time melalui tabel status mulai dari Menunggu, Diproses, hingga Selesai.</p>
+        </div>
+    </div>
+
+    <div class="guide-info">
+        <div class="guide-info-icon">💡</div>
+        <div>
+            <strong>Catatan Penting</strong>
+            <p>Pastikan laporan yang dikirimkan sesuai dengan fakta di lapangan untuk memudahkan tim teknis memberikan solusi terbaik.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+<footer class="footer">
+    <div class="footer-brand">
+        <div class="footer-logo">ER</div>
+        <div>
+            <strong>E-Report System</strong>
+            <p>Platform Pengaduan Sarana Digital Masa Kini</p>
+        </div>
+    </div>
+
+    <div class="footer-right">
+        <p>© 2026 E-Report • All Rights Reserved</p>
+        <span>Engineered with HTML5, Modern CSS & JavaScript</span>
+    </div>
+</footer>
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+<script src="assets/js/sricpt.js"></script>
+
+</body>
+</html>
